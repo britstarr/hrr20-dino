@@ -6,6 +6,8 @@ import Divider from 'material-ui/Divider';
 import Launch from 'material-ui/svg-icons/action/launch';
 import IconButton from 'material-ui/IconButton';
 import Checkbox from 'material-ui/Checkbox';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import { Link } from 'react-router';
 
 
 export default class Routine extends React.Component {
@@ -40,6 +42,11 @@ export default class Routine extends React.Component {
         <div style={centerPaper}>
           <div>
             <Paper style={paperStyle} zDepth={4}>
+
+              <Link to='/'>
+                <ArrowBack />
+              </Link>
+
               <List>
                 {/* for each task in routine */}
                 {/* add specific task name within primaryText */}
