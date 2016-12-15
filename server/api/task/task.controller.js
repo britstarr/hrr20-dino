@@ -5,18 +5,17 @@ const Models = require('../../../database/database_config');
 module.exports = {
 
   addATask: function (req, res, next) {
-    Models.Task.build({
+    Models.Task.create({
       name: req.body.name,
       description: req.body.description,
       completed: req.body.completed,
       routineId: req.params.routineId
     })
-    .save()
     .then(function(addedTask) {
-      res.json(addedTask);
+      res.sendStatus(201);
     })
     .catch(function(error) {
-      next(error);
+      console.log("addATask error", error);
     });
   },
 
