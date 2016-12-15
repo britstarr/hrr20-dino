@@ -4,14 +4,14 @@ const Models = require('../../../database/database_config');
 module.exports = {
   //Adds a user's routine to the Routine table
   addARoutine: function (req, res, next) {
-    Models.Routine.build({
+    Models.Routine.create({
       name: req.body.name,
       description: req.body.description,
       start_time: req.body.start_time,
       end_time: req.body.end_time,
       repeat: req.body.repeat,
       completed: req.body.completed
-    }).save()
+    })
     .then(function(){
       res.status(201).send('Successfully created routine!')
     })
@@ -44,7 +44,7 @@ module.exports = {
       }
     })
     .then(function(routine){
-      console.log(routine);
+      console.log("routine", routine);
       res.status(200).json(routine);
     })
     .catch(function(error) {

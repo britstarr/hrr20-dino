@@ -10,14 +10,14 @@ var db_connection = new Sequelize('app_data', 'dino', '', {
 
 //########################__Define Models__###############################
 
-var User = db_connection.define('user', {
+var User = db_connection.define('User', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
   name: {type: Sequelize.STRING, unique: true, validate: {notEmpty: true}},
   password: {type: Sequelize.STRING, validate: {notEmpty: true}},
   avatar: {type: Sequelize.STRING}
 });
 
-var Routine = db_connection.define('routine', {
+var Routine = db_connection.define('Routine', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
   name: {type: Sequelize.STRING, unique: true, validate: {notEmpty: true}},
   description: {type: Sequelize.TEXT, validate: {notEmpty: true}},
@@ -27,14 +27,14 @@ var Routine = db_connection.define('routine', {
   completed: {type: Sequelize.BOOLEAN}
 });
 
-var Task = db_connection.define('task', {
+var Task = db_connection.define('Task', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
   name: {type: Sequelize.STRING, unique: true, validate: {notEmpty: true}},
   description: {type: Sequelize.STRING, validate: {notEmpty: true}},
   completed: {type: Sequelize.BOOLEAN}
 });
 
-var History = db_connection.define('history', {
+var History = db_connection.define('History', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
   date: {type: Sequelize.DATEONLY},
   completed: {type: Sequelize.BOOLEAN}
@@ -50,15 +50,13 @@ History.belongsTo(Routine);
 //#######################__Sync Database and Export__##############################
 
 db_connection.sync();
+User.sync();
+Routine.sync();
+Task.sync();
+History.sync();
 
-module.exports = {
-  connection: db_connection,
-  User: User,
-  Routine: Routine,
-  Task: Task,
-  History: History
-}
-
-
-
-
+exports.connection = db_connection;
+exports.User = User;
+exports.Routine = Routine;
+exports.Task = Task;
+exports.History = History;

@@ -8,6 +8,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
 import RoutineActions from '../../flux/actions/routine-actions';
 import { Link } from 'react-router';
+const routineController = require('../../../../server/api/routine/routine.controller.js');
+import axios from 'axios';
 
 
 export default class CreateRoutine extends React.Component {
@@ -44,7 +46,7 @@ export default class CreateRoutine extends React.Component {
   }
 
   handleSubmit() {
-    RoutineActions.add({
+    axios.post('/routines', {
       name: this.state.name || '',
       description: this.state.description || '',
       repeat: this.state.days
