@@ -53,7 +53,6 @@ var path = {
 
 /*
     Build environment is determined by NODE_ENV:
-
     * The `gulp` command will build according to the NODE_ENV environment variable.
     * To build for production while NODE_ENV is *not* set to `development`,
         run `gulp production` explicitly. Note that NODE_ENV will be set
@@ -192,9 +191,9 @@ const startServer = function() {
     script: 'server/server.js',
     watch: ['server/*.js', 'server/app/**/*.js']
   });
-  
+
   let once = false;
-  
+
   server.on('start', () => {
     if (!once) {
       browserSync.init({
@@ -204,7 +203,7 @@ const startServer = function() {
       once = true;
     }
   });
-  
+
   return server;
 };
 
