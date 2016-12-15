@@ -8,3 +8,5 @@ npm-debug.log
 .floo
 .flooignore
 database/database_config.js
+database
+logfile
