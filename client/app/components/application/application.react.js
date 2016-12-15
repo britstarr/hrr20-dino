@@ -1,6 +1,8 @@
 import React from 'react';
 // import TestComponent from './test-component.react';
 // import PreAuthNav from '../routine/pre-auth-nav.react';
+import Signup from '../auth/signup.react';
+import Login from '../auth/login.react';
 import Routine from '../routine/routine.react';
 import CreateRoutine from '../routine/create-routine.react';
 import MyRoutines from '../routine/my-routines.react';
@@ -98,20 +100,12 @@ export default class Application extends React.Component {
       <div id='application'>
         <MuiThemeProvider muiTheme={getMuiTheme(Theme)} >
           <Router history={browserHistory}>
-            <Route path='/'  component={MyRoutines}
-                             routines={this.state.routines}
-                             tasks={this.state.tasks}>
-
-            </Route>
-            <Route path='/routines/:id'
-                   component={Routine}
-            />
-            <Route  path='/create-routine'
-                    component={CreateRoutine}>
-            </Route>
-            <Route path='/tasks/:id'
-                   component={Task}
-            />
+            <Route path='/'  component={MyRoutines} routines={this.state.routines} tasks={this.state.tasks}></Route>
+            <Route path='/signup' component={Signup}></Route>
+            <Route path='/login' component={Login}></Route>
+            <Route path='/routines/:id' component={Routine}></Route>
+            <Route  path='/create-routine' component={CreateRoutine}></Route>
+            <Route path='/tasks/:id' component={Task} ></Route>
           </Router>
         </MuiThemeProvider>
       </div>
