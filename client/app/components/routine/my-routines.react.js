@@ -43,11 +43,18 @@ export default class MyRoutines extends React.Component {
   }
 
   getRoutineData() {
+    console.log('getRoutineData initialized');
     RoutineStore
       .get()
       .then((data) => {
+
+        console.log('in getRoutineData, data = ' + JSON.stringify(data, null, 2));
+
+
+        console.log('in getRoutineData, data.collection = ' + JSON.stringify(data.data));
+
         this.setState({
-          routines: data.collection
+          routines: data.data
         });
       });
   }

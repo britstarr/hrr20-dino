@@ -25,11 +25,13 @@ module.exports = {
 
   //Gets the routines for the current user
   getMyRoutines: function(req, res, next) {
-    Models.Routine.findAll({
-      where: {
-        userId: req.params.userId
-      }
-    })
+    Models.Routine.findAll(
+    //   {
+    //   where: {
+    //     userId: req.params.userId
+    //   }
+    // }
+  )
     .then(function(routines){
       res.status(200).json(routines);
     })
