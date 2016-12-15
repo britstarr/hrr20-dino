@@ -6,7 +6,7 @@ const path = require('path');
 const cors = require('cors');
 const config = require('./config/express');
 const routes = require('./routes');
-const port = process.env.PORT || 3032;
+const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 
 require('./config/express')(app);
