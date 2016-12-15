@@ -34,7 +34,7 @@ class Store extends EventEmitter {
   }
 
   useMockData() {
-    this.mock = true;
+    this.mock = false;  // was true
     this.data.collection = MockData[this.storeName];
   }
 

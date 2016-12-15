@@ -46,11 +46,19 @@ export default class CreateRoutine extends React.Component {
   }
 
   handleSubmit() {
-    axios.post('/routines', {
-      name: this.state.name || '',
-      description: this.state.description || '',
-      repeat: this.state.days
-    });
+    // axios.post('/routines', {
+    //   name: this.state.name || '',
+    //   description: this.state.description || '',
+    //   repeat: this.state.days
+    // });
+    console.log('handleSubmit invoked in create-routine.react, state being passed to Routine ACtions: ' + JSON.stringify(this.state));
+
+   RoutineActions.add({
+    name: this.state.name || '',
+    description: this.state.description || '',
+    repeat: this.state.days
+  });
+
   }
 
   render() {
