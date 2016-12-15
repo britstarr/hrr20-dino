@@ -7,3 +7,4 @@ server/db
 npm-debug.log
 .floo
 .flooignore
+database/database_config.js
