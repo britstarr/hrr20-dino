@@ -12,16 +12,16 @@ export default {
     textColor: Colors.white
   },
   palette: {
-    primary1Color: Colors.deepPurple300,
-    primary2Color: Colors.green200,
-    primary3Color: Colors.green200,
-    accent1Color: Colors.green300,
-    accent2Color: Colors.green300,
-    accent3Color: Colors.green300,
+    primary1Color: Colors.Blue500,
+    primary2Color: Colors.Blue200,
+    primary3Color: Colors.Blue300,
+    accent1Color: Colors.Blue300,
+    accent2Color: Colors.Blue300,
+    accent3Color: Colors.Blue300,
     textColor: Colors.teal900,
     alternateTextColor: Colors.white,
     canvasColor: Colors.white,
-    pickerHeaderColor: Colors.green200,
-    ToolbarGroup: Colors.blue200,
+    pickerHeaderColor: Colors.Blue200,
+    ToolbarGroup: Colors.Blue200,
   }
 };

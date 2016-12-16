@@ -12,9 +12,12 @@ var db_connection = new Sequelize('app_data', 'dino', 'hrrgroup', {
 
 var User = db_connection.define('User', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
-  name: {type: Sequelize.STRING, unique: true, validate: {notEmpty: true}},
-  password: {type: Sequelize.STRING, validate: {notEmpty: true}},
-  avatar: {type: Sequelize.STRING}
+  username: { type: Sequelize.STRING, allowNull: false, unique: true, validate: { is: /^[a-z0-9\_\-]+$/i, } },
+  email: { type: Sequelize.STRING, validate: { isEmail: true } },
+  firstName: {  type: Sequelize.STRING, },
+  lastName: {  type: Sequelize.STRING, },
+  password: { type: Sequelize.STRING, },
+  salt: { type: Sequelize.STRING }
 });
 
 var Routine = db_connection.define('Routine', {
@@ -54,6 +57,8 @@ User.sync();
 Routine.sync();
 Task.sync();
 History.sync();
+
+
 
 exports.connection = db_connection;
 exports.User = User;
