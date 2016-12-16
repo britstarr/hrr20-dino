@@ -95,10 +95,11 @@ export default class CreateRoutine extends React.Component {
                 /><br />
                 <div style={{fontSize: 18 + 'px'}}>Repeat</div>
 
-                { Object.keys(this.state.days).map((day) => {
+                { Object.keys(this.state.days).map((day, i) => {
                   return (
                     <Toggle
                       label={[day]}
+                      key={i}
                       onToggle={this.handleToggle.bind(this, day)}
                       toggled={this.state.days[day]}
                     />
