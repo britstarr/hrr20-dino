@@ -5,7 +5,7 @@ module.exports = {
   //Adds a user's routine to the Routine table
   addARoutine: function (req, res, next) {
 
-    console.log('inside addARoutine in routine.controller, req.body = ' + JSON.stringify(req.body, null, 2));
+    // console.log('inside addARoutine in routine.controller, req.body = ' + JSON.stringify(req.body, null, 2));
 
     Models.Routine.create({
       name: req.body.name,

@@ -1,6 +1,7 @@
 'use strict';
 
 const path = require('path');
+const passport = require('passport');
 const userController = require('./api/user/user.controller.js');
 const routineController = require('./api/routine/routine.controller.js');
 const taskController = require('./api/task/task.controller.js');
@@ -11,10 +12,23 @@ module.exports = function(app, express) {
 
   //controller functions are in the controller.js of each folder in ./api/
 
+  var isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated())
+      return next()
+    req.flash('error', 'You have to be logged in to access the page.')
+    res.redirect('/signup')
+  }
+
   //all the routes for users
   router.route('/users')
-    .get(userController.getAllUsers)
+    // .get(userController.getAllUsers)
     .post(userController.addUser);
+
+  // router.post('/login', passport.authenticate('local', {
+  //   successRedirect: '/routines',
+  //   failureRedirect: '/signup',
+  //   failureFlash: true 
+  // }));
 
   router.route('/users/:userId')
     .get(userController.addUser)
@@ -45,7 +59,15 @@ module.exports = function(app, express) {
     .put(taskController.updateATask)
     .delete(taskController.deleteATask);
 
+  //Authentication  
+  router.get('/routines', isAuthenticated, function(req, res) {
+    res.render('routines')
+  })
 
+  router.get('/logout', function(req, res) {
+    req.logout()
+    res.redirect('/')
+  })  
 
   // All undefined asset or api routes should return a 404
   router.route('/:url(api|auth|components|app|bower_components|assets)/*')
