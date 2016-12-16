@@ -6,6 +6,7 @@ import Toggle from 'material-ui/Toggle';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
+import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import RoutineActions from '../../flux/actions/routine-actions';
 import { Link } from 'react-router';
 const routineController = require('../../../../server/api/routine/routine.controller.js');
@@ -79,6 +80,11 @@ export default class CreateRoutine extends React.Component {
         <div style={centerPaper}>
           <div>
             <Paper style={paperStyle} zDepth={4}>
+
+              <Link to='/'>
+                <ArrowBack />
+              </Link>
+
               <div style={{margin: 20}}>
                 <TextField
                   type="text"
