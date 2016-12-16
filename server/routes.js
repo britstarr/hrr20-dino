@@ -27,7 +27,7 @@ module.exports = function(app, express) {
   // router.post('/login', passport.authenticate('local', {
   //   successRedirect: '/routines',
   //   failureRedirect: '/signup',
-  //   failureFlash: true 
+  //   failureFlash: true
   // }));
 
   router.route('/users/:userId')
@@ -40,15 +40,15 @@ module.exports = function(app, express) {
     .get(routineController.getMyRoutines)
     .post(routineController.addARoutine);
 
-  router.route('/routines/:userId')
+  router.route('/routines/:routineId')
     .get(routineController.getMyRoutines)
-    .post(routineController.addARoutine);
+    .post(routineController.addARoutine)
+    .delete(routineController.deleteARoutine);
 
-  router.route('/routines/:userId/:routineId')
-    .get(routineController.getARoutine)
-    .put(routineController.updateARoutine)
-    .delete(routineController.deleteARoutine)
-
+  // router.route('/routines/:userId/:routineId')
+  //   .get(routineController.getARoutine)
+  //   .put(routineController.updateARoutine)
+  //   .delete(routineController.deleteARoutine)
 
   //all the routes for tasks
   router.route('/tasks/:userId/:routineId')
@@ -59,7 +59,7 @@ module.exports = function(app, express) {
     .put(taskController.updateATask)
     .delete(taskController.deleteATask);
 
-  //Authentication  
+  //Authentication
   router.get('/routines', isAuthenticated, function(req, res) {
     res.render('routines')
   })
@@ -67,7 +67,7 @@ module.exports = function(app, express) {
   router.get('/logout', function(req, res) {
     req.logout()
     res.redirect('/')
-  })  
+  })
 
   // All undefined asset or api routes should return a 404
   router.route('/:url(api|auth|components|app|bower_components|assets)/*')

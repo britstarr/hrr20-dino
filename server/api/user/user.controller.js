@@ -12,20 +12,21 @@ module.exports = {
    var username = req.body.username;
    var password = req.body.password;
    var password2 = req.body.password2;
-    
+
   if (!username || !password || !password2) {
     req.flash('error', "Please, fill in all the fields.");
     res.redirect('signup');
   }
-  
+
   if (password !== password2) {
     req.flash('error', "Please, enter the same password twice.");
     res.redirect('signup');
   }
-  
+
   var salt = bcrypt.genSaltSync(10);
+  console.log('THIS IS SALT', salt);
   var hashedPassword = bcrypt.hashSync(password, salt);
-  
+
   var newUser = {
     username: username,
     salt: salt,

@@ -62,7 +62,7 @@ module.exports = {
     Models.Routine.destroy({
       where: {
         id: req.params.routineId,
-        userId: req.params.userId
+        // userId: req.params.userId
       }
     })
     .then(function() {
