@@ -101,7 +101,7 @@ export default class MyRoutines extends React.Component {
                 iconElementLeft={ <IconButton onClick={this.handleRemoveRoutine.bind(this, routine.id)}>
                                     <NavigationClose />
                                   </IconButton> }
-                iconElementRight={ <Link params={{ name: routine.name }} to={`/routines/${routine.name}`}><IconButton><Launch /></IconButton></Link> }
+                iconElementRight={ <Link to={{ pathname:`/routines/${routine.name}`, state: {name: routine.name} }}><IconButton><Launch /></IconButton></Link> }
               />
               <List>
 
@@ -113,7 +113,7 @@ export default class MyRoutines extends React.Component {
                       {/* insert onTapTouch for ListItem */}
                       <ListItem
                         primaryText={task.name}
-                        rightIcon={<Link params={{ name: routine.name }} to={`/tasks/${task.name}`}><Launch /></Link>}
+                        rightIcon={ <Link to={{pathname:`/tasks/${task.name}`, state:{name: routine.name} }} ><Launch /></Link>}
                       >
                       </ListItem>
                     </div>
