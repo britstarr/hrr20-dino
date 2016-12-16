@@ -70,7 +70,7 @@ export default class MyRoutines extends React.Component {
   }
 
   findTasksForRoutine(routine) {
-    return this.state.tasks.filter((task) => {
+    return _.filter(this.state.tasks, (task) => {
       return task.routineId === routine.id;
     });
   }
