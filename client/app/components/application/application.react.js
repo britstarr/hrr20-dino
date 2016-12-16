@@ -27,6 +27,7 @@ UserStore.useMockData();
 RoutineStore.useMockData();
 TaskStore.useMockData();
 
+
 export default class Application extends React.Component {
   constructor(props) {
     super(props);
@@ -38,6 +39,27 @@ export default class Application extends React.Component {
       routines: [],
       tasks: []
     };
+
+    // this.routes = {
+    //     path: '/',
+    //     component: MyRoutines,
+    //     routines: this.state.routines,
+    //     tasks: this.state.tasks,
+    //     childRoutes: [
+    //         { path: '/signup', component: Signup },
+    //         { path: '/login', component: Login },
+    //         { path: '/routines/:id', component: Routine },
+    //         { path: '/create-routine', component: CreateRoutine },
+    //         { path: '/tasks/:id', component: Task },
+    //         // {   // this is an example of more child routes
+    //         //     path: '/posts',
+    //         //     component: Posts,
+    //         //     childRoutes: [ { path: '/post/:nr', component: Post } ]
+    //         // },
+    //         // { path: '*', component: NoMatch}
+    //     ]
+    //   };
+
   }
 
   componentDidMount() {
@@ -93,6 +115,19 @@ export default class Application extends React.Component {
         });
       });
   }
+
+
+  //   render() {
+  //     return (
+  //       <div id='application'>
+  //         <MuiThemeProvider muiTheme={getMuiTheme(Theme)} >
+  //           <Router history={browserHistory} routes={this.routes}>
+  //           </Router>
+  //         </MuiThemeProvider>
+  //       </div>
+  //     );
+  //   }
+  // }
 
   render() {
 
