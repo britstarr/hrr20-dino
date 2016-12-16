@@ -7,6 +7,7 @@ import Launch from 'material-ui/svg-icons/action/launch';
 import IconButton from 'material-ui/IconButton';
 import Checkbox from 'material-ui/Checkbox';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { Link } from 'react-router';
 
 // flux
@@ -53,6 +54,10 @@ export default class Routine extends React.Component {
     });
   }
 
+  handleRemoveTask() {
+
+  }
+
   render() {
     const paperStyle = {
       height: 600,
@@ -83,16 +88,30 @@ export default class Routine extends React.Component {
               </Link>
 
               <List>
-                {/* for each task in routine */}
-                {/* add specific task name within primaryText */}
+                {/* display Routine Name within primaryText */}
+                {/* display routine description inside secondaryText */}
                 <ListItem
                   primaryText={this.props.params.id}
                   secondaryText={this.state.description}
-                  leftCheckbox={<Checkbox />}
-                  rightIconButton={launchTask}
                 />
               </List>
               <Divider />
+
+              <List>
+                {/* for each task in routine */}
+                {/* add specific task name within primaryText */}
+                {this.state.tasks.map((task) => {
+                  return (<ListItem
+                  primaryText={task}
+                  leftCheckbox={<Checkbox />}
+                  rightIconButton={ <IconButton onClick={this.handleRemoveTask.bind(this, task.id)}>
+                                    <NavigationClose />
+                                  </IconButton> }
+
+                  />)
+                })}
+              </List>
+
             </Paper>
           </div>
         </div>
