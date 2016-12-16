@@ -20,14 +20,14 @@ export default class Routine extends React.Component {
     super(props);
     this.state = {
       routines: [],
-      description: ''
+      description: '',
+      tasks: ['Walk dog', 'Walk cat', 'Walk raccoon', 'Walk slime']
     };
   }
 
   componentDidMount() {
     this.getRoutineData();
     console.log('==========> ==========> ==========> ==========>');
-
   }
 
   getRoutineData() {
