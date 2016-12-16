@@ -9,13 +9,48 @@ import Checkbox from 'material-ui/Checkbox';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import { Link } from 'react-router';
 
+// flux
+import RoutineStore from '../../flux/stores/routine-store';
+import TaskStore from '../../flux/stores/task-store';
+import RoutineActions from '../../flux/actions/routine-actions';
+
 
 export default class Routine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      routines: [],
+      description: ''
     };
+  }
+
+  componentDidMount() {
+    this.getRoutineData();
+    console.log('==========> ==========> ==========> ==========>');
+
+  }
+
+  getRoutineData() {
+    RoutineStore
+      .get()
+      .then((data) => {
+        // console.log('in getRoutineData, data = ' + JSON.stringify(data, null, 2));
+        // console.log('in getRoutineData, data.collection = ' + JSON.stringify(data.data));
+        this.setState({
+          routines: data.data
+        }, this.getThisRoutine);
+      });
+  }
+
+  getThisRoutine() {
+    console.log(this.state.routines);
+    var routine = _.filter(this.state.routines, (item) =>
+      item.name === this.props.params.id
+    )
+    console.log('THIS IS ROUTINE!!!!! ', routine);
+    this.setState({
+      description: routine[0].description
+    });
   }
 
   render() {
@@ -52,6 +87,7 @@ export default class Routine extends React.Component {
                 {/* add specific task name within primaryText */}
                 <ListItem
                   primaryText={this.props.params.id}
+                  secondaryText={this.state.description}
                   leftCheckbox={<Checkbox />}
                   rightIconButton={launchTask}
                 />
