@@ -37,8 +37,15 @@ export default class Routine extends React.Component {
 
   componentDidMount() {
     this.getRoutineData();
+    // this.getTaskData();
 
-    // console.log('==========> ==========> ==========> ==========>');
+    RoutineStore.addChangeListener(this.getRoutineData.bind(this));
+    TaskStore.addChangeListener(this.getTaskData.bind(this));
+  }
+
+  componentWillUnmount() {
+    RoutineStore.removeChangeListener(this.getRoutineData);
+    TaskStore.removeChangeListener(this.getTaskData);
   }
 
   getRoutineData() {
@@ -102,10 +109,15 @@ export default class Routine extends React.Component {
       description: this.state.newTaskDescription,
       RoutineId: this.state.RoutineId
     })
+
+    this.setState({
+      newTask: '',
+      newTaskDescription: ''
+    }, () => console.log('invoked setState in add, newTask state currently: ' + this.state.newTask));
   }
 
-  handleRemoveTask() {
-
+  handleRemoveTask(id) {
+    TaskActions.remove(id);
   }
 
   render() {
@@ -157,15 +169,15 @@ export default class Routine extends React.Component {
                   key={i}
                   leftCheckbox={<Checkbox />}
                   rightIconButton={ <IconButton onClick={this.handleRemoveTask.bind(this, task.id)}>
-                                    <NavigationClose />
-                                  </IconButton> }
-
+                            <NavigationClose />
+                            </IconButton> }
                   />)
                 })}
               </List>
               <Divider />
               <TextField
                 onChange={this.handleChange.bind(this, 'newTask')}
+                value={this.state.newTask}
                 hintText='Wash Hands First!'
                 floatingLabelText='Add a new task!'
                 rows={2}
@@ -173,6 +185,7 @@ export default class Routine extends React.Component {
               />
               <TextField
                 onChange={this.handleChange.bind(this, 'newTaskDescription')}
+                value={this.state.newTaskDescription}
                 hintText='Be clean!'
                 floatingLabelText='Add a new task Description!'
                 rows={2}
