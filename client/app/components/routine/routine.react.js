@@ -17,6 +17,9 @@ import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
 import RoutineStore from '../../flux/stores/routine-store';
 import TaskStore from '../../flux/stores/task-store';
 import RoutineActions from '../../flux/actions/routine-actions';
+import TaskActions from '../../flux/actions/task-actions';
+
+
 
 
 export default class Routine extends React.Component {
@@ -24,14 +27,17 @@ export default class Routine extends React.Component {
     super(props);
     this.state = {
       routines: [],
+      RoutineId: undefined,
       description: '',
       tasks: [],
       newTask:'',
+      newTaskDescription: ''
     };
   }
 
   componentDidMount() {
     this.getRoutineData();
+
     // console.log('==========> ==========> ==========> ==========>');
   }
 
@@ -52,10 +58,11 @@ export default class Routine extends React.Component {
     var routine = _.filter(this.state.routines, (item) =>
       item.name === this.props.params.id
     )
-    console.log('THIS IS ROUTINE!!!!! ', routine);
+    // console.log('THIS IS ROUTINE!!!!! ', routine);
     this.setState({
-      description: routine[0].description
-    });
+      description: routine[0].description,
+      RoutineId: routine[0].id
+    }, this.getTaskData);
   }
 
 
@@ -64,15 +71,20 @@ export default class Routine extends React.Component {
     TaskStore
       .get()
       .then((data) => {
+        console.log('in getTaskData, data.data = ' + JSON.stringify(data.data, null, 2));
+
         this.setState({
-          tasks: data.collection
+          tasks: data.data
         });
+      })
+      .then(() => {
+        console.log('invoked, getTaskData in routine.react, this.state.tasks now: ', this.state.tasks);
       });
   }
 
   findTasksForRoutine(routine) {
     return _.filter(this.state.tasks, (task) => {
-      return task.routineId === routine.id;
+      return task.RoutineId === routine.id;
     });
   }
 ////////////// End of copy-pasta ///////////
@@ -84,7 +96,12 @@ export default class Routine extends React.Component {
   }
 
   handleSubmit() {
-
+    console.log('in routine.react, RoutineId before sumbit = ', this.state.RoutineId)
+    TaskActions.add({
+      name: this.state.newTask,
+      description: this.state.newTaskDescription,
+      RoutineId: this.state.RoutineId
+    })
   }
 
   handleRemoveTask() {
@@ -133,9 +150,11 @@ export default class Routine extends React.Component {
               <List>
                 {/* for each task in routine */}
                 {/* add specific task name within primaryText */}
-                {this.state.tasks.map((task) => {
+                {this.state.tasks.map((task, i) => {
                   return (<ListItem
-                  primaryText={task}
+                  primaryText={task.name}
+                  secondaryText={task.description}
+                  key={i}
                   leftCheckbox={<Checkbox />}
                   rightIconButton={ <IconButton onClick={this.handleRemoveTask.bind(this, task.id)}>
                                     <NavigationClose />
@@ -149,6 +168,13 @@ export default class Routine extends React.Component {
                 onChange={this.handleChange.bind(this, 'newTask')}
                 hintText='Wash Hands First!'
                 floatingLabelText='Add a new task!'
+                rows={2}
+                fullWidth={true}
+              />
+              <TextField
+                onChange={this.handleChange.bind(this, 'newTaskDescription')}
+                hintText='Be clean!'
+                floatingLabelText='Add a new task Description!'
                 rows={2}
                 fullWidth={true}
               />

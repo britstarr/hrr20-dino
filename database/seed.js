@@ -27,7 +27,7 @@ test_routine.save().catch(function(error){
 var test_task = database.Task.build({
   name: 'Get on horse',
   description: 'Prepare for jousting by getting on horse',
-  routineId: 1
+  RoutineId: 1
 });
 
 test_task.save().catch(function(error){
@@ -38,7 +38,7 @@ var test_history = database.History.build({
   date: '2016-12-11',
   completed: true,
   userId: 1,
-  routineId: 1
+  RoutineId: 1
 });
 
 test_history.save().catch(function(error){

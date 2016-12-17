@@ -44,7 +44,7 @@ module.exports = {
   getARoutine: function(req, res, next) {
     Models.Routine.findAll({
       where: {
-        id: req.params.routineId,
+        id: req.params.RoutineId,
         userId: req.params.userId
       }
     })
@@ -61,7 +61,7 @@ module.exports = {
   deleteARoutine: function(req, res, next) {
     Models.Routine.destroy({
       where: {
-        id: req.params.routineId,
+        id: req.params.RoutineId,
         // userId: req.params.userId
       }
     })
