@@ -67,6 +67,9 @@ class Store extends EventEmitter {
   }
 
   _add(data) {
+
+    console.log('in store.js _add, data = ', data);
+
     if (this.mock) {
       this.data.collection.push(data);
       this.emitChange();

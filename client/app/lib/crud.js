@@ -38,7 +38,7 @@ export default class Crud {
   get(endpoint, params = {}) {
     return new Promise((resolve, reject) => {
       const id = params.id !== undefined ? params.id : '';
-      this.axios.get(`/${endpoint}/${this.currentUser.id}/${id}`, {
+      this.axios.get(`/${endpoint}`, {
         params: params
       })
         .then((res) => {
@@ -49,10 +49,27 @@ export default class Crud {
         });
     });
   }
+  // get(endpoint, params = {}) {
+  //   return new Promise((resolve, reject) => {
+  //     const id = params.id !== undefined ? params.id : '';
+  //     this.axios.get(`/${endpoint}/${this.currentUser.id}/${id}`, {
+  //       params: params
+  //     })
+  //       .then((res) => {
+  //         resolve(res);
+  //       })
+  //       .catch((err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // }
 
   post(endpoint, data) {
+
+    console.log('in crud.js posting, endpoint = ' + endpoint + ', and data = ' + JSON.stringify(data));
+
     return new Promise((resolve, reject) => {
-      this.axios.post(`/${endpoint}/${this.currentUser.id}`, data)
+      this.axios.post(`/${endpoint}`, data)
         .then((res) => {
           resolve(res);
         })
@@ -61,6 +78,17 @@ export default class Crud {
         });
     });
   }
+    // original code
+  //   return new Promise((resolve, reject) => {
+  //     this.axios.post(`/${endpoint}/${this.currentUser.id}`, data)
+  //       .then((res) => {
+  //         resolve(res);
+  //       })
+  //       .catch((err) => {
+  //         reject(err);
+  //       });
+  //   });
+  // }
 
   update(endpoint, id, data) {
     return new Promise((resolve, reject) => {

@@ -9,7 +9,7 @@ module.exports = {
       name: req.body.name,
       description: req.body.description,
       completed: req.body.completed,
-      routineId: req.params.routineId
+      RoutineId: req.body.RoutineId
     })
     .then(function(addedTask) {
       res.sendStatus(201);
@@ -21,11 +21,13 @@ module.exports = {
 
   //gets the routines for the specific user
   getAllTasks: function(req, res, next) {
-    Models.Task.findAll({
-      where: {
-        routineId: req.params.routineId
-      }
-    })
+    Models.Task.findAll(
+    //   {
+    //   where: {
+    //     RoutineId: req.params.RoutineId
+    //   }
+    // }
+  )
       .then(function (tasks) {
         res.json(tasks);
       })

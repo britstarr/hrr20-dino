@@ -42,24 +42,35 @@ module.exports = function(app, express) {
     .get(routineController.getMyRoutines)
     .post(routineController.addARoutine);
 
-  router.route('/routines/:routineId')
+  router.route('/routines/:RoutineId')
     .get(routineController.getMyRoutines)
     .post(routineController.addARoutine)
     .delete(routineController.deleteARoutine);
 
-  // router.route('/routines/:userId/:routineId')
+  // router.route('/routines/:userId/:RoutineId')
   //   .get(routineController.getARoutine)
   //   .put(routineController.updateARoutine)
   //   .delete(routineController.deleteARoutine)
 
   //all the routes for tasks
-  router.route('/tasks/:userId/:routineId')
+  router.route('/tasks')
     .get(taskController.getAllTasks)
     .post(taskController.addATask);
 
-  router.route('/tasks/:userId/:taskId')
+  router.route('/tasks/:taskId')
     .put(taskController.updateATask)
     .delete(taskController.deleteATask);
+
+    // original code with user id
+  // router.route('/tasks/:userId/:RoutineId')
+  //   .get(taskController.getAllTasks)
+  //   .post(taskController.addATask);
+  //
+  // router.route('/tasks/:userId/:taskId')
+  //   .put(taskController.updateATask)
+  //   .delete(taskController.deleteATask);
+
+  ///////////////////////////////////////
 
   //Authentication
   // router.get('/routines', isAuthenticated, function(req, res) {
