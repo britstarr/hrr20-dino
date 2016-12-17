@@ -46,6 +46,7 @@ module.exports = {
   .then(function() {
       res.status(201).send('Successfully created a user!')
       // res.redirect('/login');
+
     })
     .catch(function(error) {
       req.flash("error", "Please, choose a different username.");

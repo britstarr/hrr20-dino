@@ -28,7 +28,7 @@ module.exports = function(app, express) {
   // router.post('/login', passport.authenticate('local', {
   //   successRedirect: '/routines',
   //   failureRedirect: '/signup',
-  //   failureFlash: true 
+  //   failureFlash: true
   // }));
 
   router.route('/users/:userId')
@@ -42,15 +42,15 @@ module.exports = function(app, express) {
     .get(routineController.getMyRoutines)
     .post(routineController.addARoutine);
 
-  router.route('/routines/:userId')
+  router.route('/routines/:routineId')
     .get(routineController.getMyRoutines)
-    .post(routineController.addARoutine);
+    .post(routineController.addARoutine)
+    .delete(routineController.deleteARoutine);
 
-  router.route('/routines/:userId/:routineId')
-    .get(routineController.getARoutine)
-    .put(routineController.updateARoutine)
-    .delete(routineController.deleteARoutine)
-
+  // router.route('/routines/:userId/:routineId')
+  //   .get(routineController.getARoutine)
+  //   .put(routineController.updateARoutine)
+  //   .delete(routineController.deleteARoutine)
 
   //all the routes for tasks
   router.route('/tasks/:userId/:routineId')
