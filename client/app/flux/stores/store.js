@@ -97,6 +97,9 @@ class Store extends EventEmitter {
   }
 
   _remove(id) {
+
+    console.log('in store.js _remove, id = ', id);
+
     if (this.mock) {
       const index = _.findIndex(this.data.collection, { id: id });
       if (index !== -1) {
