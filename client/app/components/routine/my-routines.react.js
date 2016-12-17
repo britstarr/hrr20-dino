@@ -9,6 +9,7 @@ import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { Link } from 'react-router';
+import Checkbox from 'material-ui/Checkbox';
 
 // flux
 import RoutineStore from '../../flux/stores/routine-store';
@@ -59,8 +60,8 @@ export default class MyRoutines extends React.Component {
       .get()
       .then((data) => {
         this.setState({
-          tasks: data.collection
-        });
+          tasks: data.data
+        }, ()=> console.log('in getTaskData my-routines, state.tasks now: ' + JSON.stringify(this.state.tasks, null, 2)));
       });
   }
 
@@ -72,6 +73,10 @@ export default class MyRoutines extends React.Component {
 
   handleRemoveRoutine(id) {
     RoutineActions.remove(id);
+  }
+
+  handleRemoveTask(id) {
+    TaskActions.remove(id);
   }
 
   render() {
@@ -111,7 +116,10 @@ export default class MyRoutines extends React.Component {
                         rightIcon={ <Link to={{pathname:`/tasks/${task.name}`, state:{name: routine.name} }} ><Launch /></Link>}
                       >
                       </ListItem>
+
                     </div>
+
+
                   );
                 })}
               </List>
