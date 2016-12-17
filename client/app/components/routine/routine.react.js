@@ -54,7 +54,7 @@ export default class Routine extends React.Component {
   }
 
   getThisRoutine() {
-    console.log(this.state.routines);
+    // console.log(this.state.routines);
     var routine = _.filter(this.state.routines, (item) =>
       item.name === this.props.params.id
     )
@@ -68,13 +68,23 @@ export default class Routine extends React.Component {
 
 //////// copied from my-routines, add efficiency later
   getTaskData() {
+    console.log('this state', this.state.RoutineId)
+    TaskStore.data.currentRoutine = this.state.RoutineId;
     TaskStore
       .get()
       .then((data) => {
         console.log('in getTaskData, data.data = ' + JSON.stringify(data.data, null, 2));
 
+        var allTasks = data.data;
+        var routineTasks = [];
+
+        allTasks.forEach(function(val){
+          if (val.RoutineId === TaskStore.data.currentRoutine) {
+            routineTasks.push(val);
+          }
+        })
         this.setState({
-          tasks: data.data
+          tasks: routineTasks
         });
       })
       .then(() => {
