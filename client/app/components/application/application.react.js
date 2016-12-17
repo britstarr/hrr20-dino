@@ -157,6 +157,7 @@ export default class Application extends React.Component {
             <Route path='/login' component={Login}></Route>
             <Route path='/routines/:id' component={Routine}></Route>
             <Route  path='/create-routine' component={CreateRoutine}></Route>
+            <Route  path='/create-task' component={CreateTask}></Route>
             <Route path='/tasks/:id' component={Task} ></Route>
             <Route path='/themes' changeTheme={this.changeTheme.bind(this)} component={ChangeTheme} ></Route>
           </Router>
