@@ -9,7 +9,7 @@ import MyRoutines from '../routine/my-routines.react';
 import Task from '../task/task.react';
 import CreateTask from '../task/create-task.react';
 import Home from '../home/home.react';
-import SideMenu from '../side-menu/side-menu.react';
+import ChangeTheme from '../theme/change-theme.react';
 import { Link, Router, Route, browserHistory } from 'react-router';
 
 // Flux
@@ -30,7 +30,7 @@ RoutineStore.useMockData();
 TaskStore.useMockData();
 
 // Theme holder with default theme
-window.globalTheme = getMuiTheme(darkBaseTheme);
+window.globalTheme = darkBaseTheme;
 
 
 export default class Application extends React.Component {
@@ -135,10 +135,11 @@ export default class Application extends React.Component {
   // }
 
   render() {
+    var theme = getMuiTheme(window.globalTheme);
 
     return (
       <div id='application'>
-        <MuiThemeProvider muiTheme={globalTheme}>
+        <MuiThemeProvider id='application' muiTheme={theme}>
           <Router history={browserHistory}>
             <Route path='/'  component={MyRoutines} routines={this.state.routines} tasks={this.state.tasks}></Route>
             <Route path='/signup' component={Signup}></Route>
@@ -146,6 +147,7 @@ export default class Application extends React.Component {
             <Route path='/routines/:id' component={Routine}></Route>
             <Route  path='/create-routine' component={CreateRoutine}></Route>
             <Route path='/tasks/:id' component={Task} ></Route>
+            <Route path='/themes' component={ChangeTheme} ></Route>
           </Router>
         </MuiThemeProvider>
       </div>
