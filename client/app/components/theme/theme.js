@@ -86,14 +86,14 @@ module.exports.andrew = {
     primary1Color: '#455A64',
     primary2Color: '#607D8B',
     primary3Color: '#757575',
-    accent1Color: Colors.Blue300,
-    accent2Color: Colors.Blue300,
-    accent3Color: Colors.Blue300,
+    accent1Color: Colors.Green300,
+    accent2Color: Colors.Green300,
+    accent3Color: Colors.Green300,
     textColor: '#212121',
     alternateTextColor: Colors.white,
     canvasColor: '#BDBDBD',
-    pickerHeaderColor: Colors.Blue200,
-    ToolbarGroup: Colors.Blue200,
+    pickerHeaderColor: Colors.Green200,
+    ToolbarGroup: Colors.Green200,
   }
 };
 

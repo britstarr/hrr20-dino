@@ -9,10 +9,11 @@ injectTapEventPlugin();
 
 
 ReactDOM.render(
-  <div>
-    <MuiThemeProvider>
+
+
       <Application />
-    </MuiThemeProvider>
-  </div>,
+
+
+  ,
   document.getElementById('app-container')
 );

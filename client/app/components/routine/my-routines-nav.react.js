@@ -37,7 +37,9 @@ export default class MyRoutinesNav extends React.Component {
       <div>
         <Toolbar>
           <ToolbarGroup firstChild={true}>
-            {/* handle reorder href to open SideMenu */}
+            {/* We want this to be a drop-down menu, but using a Link to re-route to theme page for now */}
+
+            <Link to='/themes'>
             <IconMenu
               iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
               anchorOrigin={{horizontal: 'left', vertical: 'top'}}
@@ -60,6 +62,8 @@ export default class MyRoutinesNav extends React.Component {
               <MenuItem primaryText="Settings" />
               <MenuItem primaryText="Help" />
             </IconMenu>
+            </Link>
+
             <Link to='/'>
               <ToolbarTitle style={logoStyle} text="DinoTask" />
             </Link>
