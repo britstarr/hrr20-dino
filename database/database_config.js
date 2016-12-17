@@ -5,7 +5,8 @@ var Sequelize = require('sequelize');
 var db_connection = new Sequelize('app_data', 'dino', 'hrrgroup', {
   host: 'localhost',
   dialect: 'postgres',
-  port: 5432
+  port: 5432,
+  logging: false
 });
 
 //########################__Define Models__###############################
