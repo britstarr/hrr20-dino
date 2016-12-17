@@ -130,6 +130,12 @@ export default class Routine extends React.Component {
     TaskActions.remove(id);
   }
 
+  findTasksForRoutine() {
+    return _.filter(this.state.tasks, (task) => {
+      return task.RoutineId === this.state.RoutineId;
+    });
+  }
+
   render() {
     const paperStyle = {
       height: 600,
@@ -172,17 +178,18 @@ export default class Routine extends React.Component {
               <List>
                 {/* for each task in routine */}
                 {/* add specific task name within primaryText */}
-                {this.state.tasks.map((task, i) => {
+                {this.findTasksForRoutine().map((task) => {
                   return (<ListItem
                   primaryText={task.name}
                   secondaryText={task.description}
-                  key={i}
+                  key={task.id}
                   leftCheckbox={<Checkbox />}
                   rightIconButton={ <IconButton onClick={this.handleRemoveTask.bind(this, task.id)}>
                             <NavigationClose />
                             </IconButton> }
                   />)
                 })}
+
               </List>
               <Divider />
               <TextField
