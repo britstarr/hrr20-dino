@@ -55,10 +55,9 @@ module.exports = {
   },
 
   getAllUsers: function (req, res, next) {
-    // Models.User.findAll(
-    //   res.render('signup');
-    // )
-    // .then(function())
+    Models.User.findAll(
+      // res.render('signup');
+    )
   },
 
   getAUser: function(req, res, next) {

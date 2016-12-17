@@ -11,25 +11,40 @@ module.exports = function(app, express) {
   var router = express.Router();
 
   //controller functions are in the controller.js of each folder in ./api/
+  var isAuthenticated = function (req, res, next) {
+    console.log("From routes - Authenticated is fired.")
+    if (req.isAuthenticated())
+      return next()
+    req.flash('error', 'You have to be logged in to access the page.')
+    res.redirect('/')
+  };
+
 
 
   //all the routes for users
-  // router.route('/users')
-    // .get(userController.getAllUsers)
-    // .post(userController.addUser);
+  router.route('/users')
+    .get(userController.getAllUsers)
+    .post(userController.addUser);
 
-  // var isAuthenticated = function (req, res, next) {
-  //   console.log("From routes - Authenticated is fired.")
-  //   if (req.isAuthenticated())
-  //     return next()
-  //   req.flash('error', 'You have to be logged in to access the page.')
-  //   res.redirect('/signup')
-  // }
-  // router.post('/login', passport.authenticate('local', {
-  //   successRedirect: '/routines',
-  //   failureRedirect: '/signup',
-  //   failureFlash: true
-  // }));
+
+  router.post('/login', passport.authenticate('local', {
+    successRedirect: '/routines',
+    failureRedirect: '/signup',
+    failureFlash: true
+  }));
+
+
+    //Authentication
+  router.get('/routines', isAuthenticated, function(req, res) {
+    res.render('routines')
+  });
+
+  router.get('/logout', function(req, res) {
+    req.logout()
+    res.redirect('/')
+  });
+  
+
 
   router.route('/users/:userId')
     // .get(userController.addUser)
@@ -72,15 +87,7 @@ module.exports = function(app, express) {
 
   ///////////////////////////////////////
 
-  //Authentication
-  // router.get('/routines', isAuthenticated, function(req, res) {
-  //   res.render('routines')
-  // })
 
-  // router.get('/logout', function(req, res) {
-  //   req.logout()
-  //   res.redirect('/')
-  // })
 
   // All undefined asset or api routes should return a 404
   router.route('/:url(api|auth|components|app|bower_components|assets)/*')
