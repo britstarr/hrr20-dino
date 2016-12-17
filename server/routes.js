@@ -32,7 +32,7 @@ module.exports = function(app, express) {
   // }));
 
   router.route('/users/:userId')
-    .get(userController.addUser)
+    // .get(userController.addUser)
     .post(userController.addUser)
     .put(userController.updateAUser)
     .delete(userController.deleteAUser);
@@ -61,7 +61,7 @@ module.exports = function(app, express) {
     .put(taskController.updateATask)
     .delete(taskController.deleteATask);
 
-  //Authentication  
+  //Authentication
   // router.get('/routines', isAuthenticated, function(req, res) {
   //   res.render('routines')
   // })
@@ -69,7 +69,7 @@ module.exports = function(app, express) {
   // router.get('/logout', function(req, res) {
   //   req.logout()
   //   res.redirect('/')
-  // })  
+  // })
 
   // All undefined asset or api routes should return a 404
   router.route('/:url(api|auth|components|app|bower_components|assets)/*')
