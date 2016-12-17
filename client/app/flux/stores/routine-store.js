@@ -11,6 +11,7 @@ class RoutineStore extends Store {
     super({
       storeName: 'routines'
     });
+    this.data.currentRoutine = null;
   }
 }
 
