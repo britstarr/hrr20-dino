@@ -57,9 +57,9 @@ export default class ChangeTheme extends React.Component {
 
   handleClick(theme) {
     console.log(theme);
-
-    window.globalTheme = theme;
-    console.log(window.globalTheme);
+    // window.globalTheme = theme;
+    // console.log(window.globalTheme);
+    this.props.route.changeTheme(theme);
   }
 
   render() {

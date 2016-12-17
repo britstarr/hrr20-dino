@@ -30,6 +30,7 @@ RoutineStore.useMockData();
 TaskStore.useMockData();
 
 // Theme holder with default theme
+// Not using this at the moment
 window.globalTheme = darkBaseTheme;
 
 
@@ -42,7 +43,9 @@ export default class Application extends React.Component {
       currentUser: null,
 
       routines: [],
-      tasks: []
+      tasks: [],
+
+      theme: getMuiTheme(darkBaseTheme)
     };
 
     // this.routes = {
@@ -121,6 +124,14 @@ export default class Application extends React.Component {
       });
   }
 
+  changeTheme(theme) {
+    console.log('ABLE TO CALL THIS FUNCTION!!! The theme is: ', theme);
+    var newTheme = getMuiTheme(theme);
+    this.setState({
+      theme: newTheme
+    });
+  }
+
 
   //   render() {
   //     return (
@@ -135,11 +146,11 @@ export default class Application extends React.Component {
   // }
 
   render() {
-    var theme = getMuiTheme(window.globalTheme);
+
 
     return (
       <div id='application'>
-        <MuiThemeProvider id='application' muiTheme={theme}>
+        <MuiThemeProvider id='application' muiTheme={this.state.theme}>
           <Router history={browserHistory}>
             <Route path='/'  component={MyRoutines} routines={this.state.routines} tasks={this.state.tasks}></Route>
             <Route path='/signup' component={Signup}></Route>
@@ -147,7 +158,7 @@ export default class Application extends React.Component {
             <Route path='/routines/:id' component={Routine}></Route>
             <Route  path='/create-routine' component={CreateRoutine}></Route>
             <Route path='/tasks/:id' component={Task} ></Route>
-            <Route path='/themes' component={ChangeTheme} ></Route>
+            <Route path='/themes' changeTheme={this.changeTheme.bind(this)} component={ChangeTheme} ></Route>
           </Router>
         </MuiThemeProvider>
       </div>
