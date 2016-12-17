@@ -13,9 +13,9 @@ var db_connection = new Sequelize('app_data', 'dino', 'hrrgroup', {
 var User = db_connection.define('User', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
   username: { type: Sequelize.STRING, allowNull: false, unique: true, validate: { is: /^[a-z0-9\_\-]+$/i, } },
-  email: { type: Sequelize.STRING, validate: { isEmail: true } },
-  firstName: {  type: Sequelize.STRING, },
-  lastName: {  type: Sequelize.STRING, },
+  // password: { type: Sequelize.STRING, validate: { notEmpty: true } },
+  // password2: {  type: Sequelize.STRING, },
+  // lastName: {  type: Sequelize.STRING, },
   password: { type: Sequelize.STRING, },
   salt: { type: Sequelize.STRING }
 });

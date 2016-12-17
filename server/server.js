@@ -7,15 +7,18 @@ const cors = require('cors');
 const config = require('./config/express');
 const routes = require('./routes');
 const port = process.env.PORT || 3000;
-const bodyParser = require('body-parser');
-const router = require('./routes')(app, express);
 
 //Auth
 const setupPassport = require('./auth/setupPassport');
 const flash = require('connect-flash');
+const router = require('./routes')(app, express);
 const session = require('express-session');
+const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
+app.use(cors());
+app.options('*', cors());
+app.delete('*', cors());
 
 
 //Auth
@@ -32,9 +35,6 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(cors());
-app.options('*', cors());
-app.delete('*', cors());
 
 setupPassport(app);
 

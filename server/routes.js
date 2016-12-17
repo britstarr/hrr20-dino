@@ -12,18 +12,19 @@ module.exports = function(app, express) {
 
   //controller functions are in the controller.js of each folder in ./api/
 
-  var isAuthenticated = function (req, res, next) {
-    if (req.isAuthenticated())
-      return next()
-    req.flash('error', 'You have to be logged in to access the page.')
-    res.redirect('/signup')
-  }
 
   //all the routes for users
-  router.route('/users')
+  // router.route('/users')
     // .get(userController.getAllUsers)
-    .post(userController.addUser);
+    // .post(userController.addUser);
 
+  // var isAuthenticated = function (req, res, next) {
+  //   console.log("From routes - Authenticated is fired.")
+  //   if (req.isAuthenticated())
+  //     return next()
+  //   req.flash('error', 'You have to be logged in to access the page.')
+  //   res.redirect('/signup')
+  // }
   // router.post('/login', passport.authenticate('local', {
   //   successRedirect: '/routines',
   //   failureRedirect: '/signup',
@@ -32,6 +33,7 @@ module.exports = function(app, express) {
 
   router.route('/users/:userId')
     .get(userController.addUser)
+    .post(userController.addUser)
     .put(userController.updateAUser)
     .delete(userController.deleteAUser);
 
@@ -60,14 +62,14 @@ module.exports = function(app, express) {
     .delete(taskController.deleteATask);
 
   //Authentication  
-  router.get('/routines', isAuthenticated, function(req, res) {
-    res.render('routines')
-  })
+  // router.get('/routines', isAuthenticated, function(req, res) {
+  //   res.render('routines')
+  // })
 
-  router.get('/logout', function(req, res) {
-    req.logout()
-    res.redirect('/')
-  })  
+  // router.get('/logout', function(req, res) {
+  //   req.logout()
+  //   res.redirect('/')
+  // })  
 
   // All undefined asset or api routes should return a 404
   router.route('/:url(api|auth|components|app|bower_components|assets)/*')

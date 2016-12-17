@@ -23,7 +23,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Theme from '../theme/theme.js';
 
-UserStore.useMockData();
+// UserStore.useMockData();
 RoutineStore.useMockData();
 TaskStore.useMockData();
 
@@ -67,12 +67,12 @@ export default class Application extends React.Component {
     this.getRoutineData();
     this.getTaskData();
 
-    UserActions.setCurrentUser({
-      name: 'Sir Testburg',
-      password:'test',
-      id: 1234,
-      avatar: 'http://www.yesnet.yk.ca/schools/projects/middleages2000/knights/graphics/horse.gif'
-    });
+    // UserActions.setCurrentUser({
+    //   name: 'Sir Testburg',
+    //   password:'test',
+    //   id: 1234,
+    //   avatar: 'http://www.yesnet.yk.ca/schools/projects/middleages2000/knights/graphics/horse.gif'
+    // });
 
     UserStore.addChangeListener(this.getUserData.bind(this));
     RoutineStore.addChangeListener(this.getRoutineData.bind(this));
