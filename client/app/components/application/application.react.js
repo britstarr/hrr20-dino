@@ -22,10 +22,15 @@ import TaskStore from '../../flux/stores/task-store';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import Theme from '../theme/theme.js';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 // UserStore.useMockData();
 RoutineStore.useMockData();
 TaskStore.useMockData();
+
+// Theme holder with default theme
+window.globalTheme = getMuiTheme(darkBaseTheme);
 
 
 export default class Application extends React.Component {
@@ -133,7 +138,7 @@ export default class Application extends React.Component {
 
     return (
       <div id='application'>
-        <MuiThemeProvider muiTheme={getMuiTheme(Theme)} >
+        <MuiThemeProvider muiTheme={globalTheme}>
           <Router history={browserHistory}>
             <Route path='/'  component={MyRoutines} routines={this.state.routines} tasks={this.state.tasks}></Route>
             <Route path='/signup' component={Signup}></Route>
