@@ -1,4 +1,5 @@
 import React from 'react';
+import { Router, browserHistory } from 'react-router'
 import CreateRoutineNav from './create-routine-nav.react.js';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
@@ -11,7 +12,7 @@ import RoutineActions from '../../flux/actions/routine-actions';
 import { Link } from 'react-router';
 const routineController = require('../../../../server/api/routine/routine.controller.js');
 import axios from 'axios';
-
+import RoutineStore from '../../flux/stores/routine-store';
 
 export default class CreateRoutine extends React.Component {
   constructor(props) {
@@ -60,6 +61,20 @@ export default class CreateRoutine extends React.Component {
     repeat: this.state.days
   });
 
+  setTimeout(function() {
+    axios.get('routines')
+      .then(function(routines){
+        var max = 0;
+        routines.data.forEach(function(val){
+          if (val.id > max) {
+            max = val.id
+          }
+        })
+        RoutineStore.data.currentRoutine = max;
+      });
+   }.bind(this), 3000);
+
+   browserHistory.push('create-task');
   }
 
   render() {
@@ -115,14 +130,14 @@ export default class CreateRoutine extends React.Component {
                   rows={4}
                   onChange={this.handleChange.bind(this, 'description')}
                 />
-                <Link to='/'>
+                <Link to='/create-task'>
                   <RaisedButton
                     label="Add Routine"
                     labelPosition="before"
                     primary={true}
                     icon={<AddCircleOutline />}
                     onClick={this.handleSubmit.bind(this)}
-                    Link to='/'
+                    Link to='/create-task'
                   />
                 </Link>
               </div>
