@@ -9,6 +9,9 @@ import Checkbox from 'material-ui/Checkbox';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import { Link } from 'react-router';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
+import AddCircleOutline from 'material-ui/svg-icons/content/add-circle-outline';
 
 // flux
 import RoutineStore from '../../flux/stores/routine-store';
@@ -22,13 +25,14 @@ export default class Routine extends React.Component {
     this.state = {
       routines: [],
       description: '',
-      tasks: ['Walk dog', 'Walk cat', 'Walk raccoon', 'Walk slime']
+      tasks: [],
+      newTask:'',
     };
   }
 
   componentDidMount() {
     this.getRoutineData();
-    console.log('==========> ==========> ==========> ==========>');
+    // console.log('==========> ==========> ==========> ==========>');
   }
 
   getRoutineData() {
@@ -52,6 +56,35 @@ export default class Routine extends React.Component {
     this.setState({
       description: routine[0].description
     });
+  }
+
+
+//////// copied from my-routines, add efficiency later
+  getTaskData() {
+    TaskStore
+      .get()
+      .then((data) => {
+        this.setState({
+          tasks: data.collection
+        });
+      });
+  }
+
+  findTasksForRoutine(routine) {
+    return _.filter(this.state.tasks, (task) => {
+      return task.routineId === routine.id;
+    });
+  }
+////////////// End of copy-pasta ///////////
+
+  handleChange(fieldName, event) {
+    this.setState({
+      [fieldName]: event.target.value
+    });
+  }
+
+  handleSubmit() {
+
   }
 
   handleRemoveTask() {
@@ -111,7 +144,20 @@ export default class Routine extends React.Component {
                   />)
                 })}
               </List>
-
+              <Divider />
+              <TextField
+                onChange={this.handleChange.bind(this, 'newTask')}
+                hintText='Wash Hands First!'
+                floatingLabelText='Add a new task!'
+                rows={2}
+                fullWidth={true}
+              />
+            <RaisedButton
+              label='Add Task!'
+              labelPosition='after'
+              icon={<AddCircleOutline />}
+              onClick={this.handleSubmit.bind(this)}
+            />
             </Paper>
           </div>
         </div>
