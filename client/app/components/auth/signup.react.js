@@ -27,7 +27,6 @@ export default class Signup extends React.Component {
     });
   }
 
-        
   handleSubmit() {
     console.log('handleSubmit invoked in signup.react, state being passed to User Actions: ' + JSON.stringify(this.state));
 
@@ -50,7 +49,7 @@ export default class Signup extends React.Component {
          <AppBar
             title="Sign Up"
           />
-        <TextField hintText="Username" style={style} underlineShow={false} onChange={this.handleChange.bind(this, 'name')}/>
+        <TextField hintText="Username" style={style} underlineShow={false} onChange={this.handleChange.bind(this, 'username')}/>
         <Divider />
         <TextField hintText="Password" style={style} underlineShow={false} onChange={this.handleChange.bind(this, 'password')}/>
         <Divider />

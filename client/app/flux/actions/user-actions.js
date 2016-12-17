@@ -3,6 +3,8 @@ import UserConstants from '../constants/user-constants';
 
 export default {
   add(data) {
+        console.log('Add invoked in User-actions, data = ' + JSON.stringify(data));
+
     AppDispatcher.dispatch({
       actionType: UserConstants.ADD_USER,
       data: data
