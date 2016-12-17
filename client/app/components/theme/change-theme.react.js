@@ -51,6 +51,11 @@ export default class ChangeTheme extends React.Component {
         description: "Blind me with thine light.",
         name: 'lightBaseTheme'
       },
+      {
+        label: 'FUNTIME EXTRAVAGANZA',
+        description: "L337 H4XX0R PR0 M0D3",
+        name: 'funtimeExtravaganza'
+      },
       ]
     };
   }
@@ -59,8 +64,23 @@ export default class ChangeTheme extends React.Component {
     console.log(theme);
     // window.globalTheme = theme;
     // console.log(window.globalTheme);
-    this.props.route.changeTheme(theme);
+
+    if (theme === 'funtimeExtravaganza') {
+      console.log('funtimes ACTIVATED');
+      this.calsFunTimes();
+    } else {
+      this.props.route.changeTheme(theme);
+    }
+
   }
+
+  /// l337 h4xx0r pr0 7h3m3z //////////////////////////////////
+  calsFunTimes() {
+    setInterval(() => {
+      [].forEach.call(document.querySelectorAll("*"),function(a){a.style.background="#"+(~~(Math.random()*(1<<24))).toString(16)})
+    }, 1000);
+  }
+  /////////////////////////////////////////////////////////////
 
   render() {
     const paperStyle = {
