@@ -12,11 +12,16 @@ module.exports = function(app, express) {
 
   //controller functions are in the controller.js of each folder in ./api/
   var isAuthenticated = function (req, res, next) {
-    console.log("From routes - Authenticated is fired.")
-    if (req.isAuthenticated())
+    console.log("in isAuthenticated, in routes.js, req.isAuthenticated = " + JSON.stringify(req.isAuthenticated));
+
+    if (req.isAuthenticated()) {
+
+      console.log('========>>>>>> USER WAS AUTHENTICATED, req.isAuthenticated() returned true');
+
       return next()
+    }
+    res.redirect('/login')
     req.flash('error', 'You have to be logged in to access the page.')
-    res.redirect('/')
   };
 
 
@@ -28,14 +33,14 @@ module.exports = function(app, express) {
 
 
   router.post('/login', passport.authenticate('local', {
-    successRedirect: '/routines',
+    successRedirect: '/',
     failureRedirect: '/signup',
     failureFlash: true
   }));
 
 
     //Authentication
-  router.get('/routines', isAuthenticated, function(req, res) {
+  router.get('/', isAuthenticated, function(req, res) {
     res.render('routines')
   });
 
@@ -43,7 +48,7 @@ module.exports = function(app, express) {
     req.logout()
     res.redirect('/')
   });
-  
+
 
 
   router.route('/users/:userId')

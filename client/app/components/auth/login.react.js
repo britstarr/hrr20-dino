@@ -6,6 +6,12 @@ import TextField from 'material-ui/TextField';
 import UserActions from '../../flux/actions/user-actions';
 import { Link } from 'react-router';
 
+// trying to get auth working:
+import Axios from 'axios';
+import config from '../../config/config.js';
+
+
+
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -14,10 +20,14 @@ export default class Login extends React.Component {
     this.state = {
       username: null,
       password: null,
-      error_message: null
+      error_message: null,
+      users: [],
     }
-  }
 
+    this.axios = Axios.create({
+      baseURL: config.baseURL
+    });
+  }
 
   handleChange(fieldName, event) {
     if(event.target.value)
@@ -31,8 +41,20 @@ export default class Login extends React.Component {
 
     if(!this.state.password && !this.state.username) {
         this.state.error_message = 'Fill in the fields';
-      return;
     }
+    // check if username from database corresponds to user/password combination
+    var data = {
+      username: this.state.username,
+      password: this.state.password
+    }
+
+    this.axios.post(`/login`, data)
+      .then((res) => {
+        resolve(res);
+      })
+      .catch((err) => {
+        reject(err);
+      });
   }
 
 
@@ -50,12 +72,11 @@ export default class Login extends React.Component {
         marginTop: '50px',
         marginLeft: '20px',
         marginBottom: '20px'
-       } 
+       }
     };
 
-    console.log('Log In');
-    return (  
-    
+    return (
+
       <div className="container">
           <Card style={styles.card} containerStyle={{width: 300}}>
            <CardTitle title="Log In"/>
@@ -66,13 +87,22 @@ export default class Login extends React.Component {
             <Divider/>
             <Divider/>
             <div className="button-line">
-            <Link to='/routines'>
-               <RaisedButton label="Log In" primary={true} style={styles.button} onClick={this.handleSubmit.bind(this)}/>
-            </Link>
+
+
+
+             <RaisedButton
+               label="Log In"
+               primary={true}
+               style={styles.button}
+               onClick={this.handleSubmit.bind(this)}/>
+
+
+
+
             </div>
           </form>
           </Card>
-      </div> 
+      </div>
 
     );
   }

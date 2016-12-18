@@ -61,7 +61,7 @@ export default class MyRoutines extends React.Component {
       .then((data) => {
         this.setState({
           tasks: data.data
-        }, ()=> console.log('in getTaskData my-routines, state.tasks now: ' + JSON.stringify(this.state.tasks, null, 2)));
+        });
       });
   }
 
