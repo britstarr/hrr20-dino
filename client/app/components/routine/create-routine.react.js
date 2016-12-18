@@ -61,20 +61,10 @@ export default class CreateRoutine extends React.Component {
     repeat: this.state.days
   });
 
-  setTimeout(function() {
-    axios.get('routines')
-      .then(function(routines){
-        var max = 0;
-        routines.data.forEach(function(val){
-          if (val.id > max) {
-            max = val.id
-          }
-        })
-        RoutineStore.data.currentRoutine = max;
-      });
-   }.bind(this), 3000);
+  // setTimeout(function(){
+    browserHistory.push('create-task');
+  // }, 3000).bind(this);
 
-   browserHistory.push('create-task');
   }
 
   render() {

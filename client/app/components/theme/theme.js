@@ -36,17 +36,17 @@ module.exports.brittany = {
     textColor: Colors.black
   },
   palette: {
-    primary1Color: Colors.Blue500,
-    primary2Color: Colors.Blue200,
-    primary3Color: Colors.Blue300,
-    accent1Color: Colors.Blue300,
-    accent2Color: Colors.Blue300,
-    accent3Color: Colors.Blue300,
-    textColor: Colors.teal900,
-    alternateTextColor: Colors.white,
-    canvasColor: Colors.white,
-    pickerHeaderColor: Colors.Blue200,
-    ToolbarGroup: Colors.Blue200,
+    primary1Color: '#455A64',
+    primary2Color: '#607D8B',
+    primary3Color: '#CFD8DC',
+    accent1Color: '#009688',
+    accent2Color: '#009688',
+    accent3Color: '#009688',
+    textColor: '#212121',
+    alternateTextColor: '#757575',
+    canvasColor: '#607D8B',
+    pickerHeaderColor: '#009688',
+    ToolbarGroup: '#009688',
   }
 };
 
@@ -96,5 +96,3 @@ module.exports.andrew = {
     ToolbarGroup: Colors.Green200,
   }
 };
-
-

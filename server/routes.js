@@ -43,7 +43,7 @@ module.exports = function(app, express) {
     req.logout()
     res.redirect('/')
   });
-  
+
 
 
   router.route('/users/:userId')
