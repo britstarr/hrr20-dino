@@ -3,7 +3,7 @@ const Models = require('../../../database/database_config');
 const bcrypt = require('bcrypt');
 
 module.exports = {
-   
+
     //Adds a new user to the User table
   addUser: function (req, res, next) {
 
@@ -11,13 +11,13 @@ module.exports = {
     var username = req.body.username;
     var password = req.body.password;
     var password2 = req.body.password2;
-      
+
     // if (!username || !password || !password2) {
     //   console.log('1 - Please, fill in all the fields');
     //   req.flash('error', "Please, fill in all the fields.");
     //   // res.redirect('/signup');
     // }
-    
+
     // console.log('1a - After If statement');
 
     // if (password !== password2) {
@@ -26,18 +26,18 @@ module.exports = {
     //   req.flash('error', "Please, enter the same password twice.");
     //   // res.redirect('/signup');
     // }
-    
+
     // console.log('2a - After If statement');
 
     var salt = bcrypt.genSaltSync(10);
     var hashedPassword = bcrypt.hashSync(password, salt);
-    
+
     var newUser = {
       username: username,
       salt: salt,
       password: hashedPassword
     };
-  
+
   Models.User.create({
     username: newUser.username,
     salt: newUser.salt,
@@ -55,13 +55,21 @@ module.exports = {
   },
 
   getAllUsers: function (req, res, next) {
-    Models.User.findAll(
-      // res.render('signup');
-    )
+    Models.User.findAll()
+      .then(function (users) {
+        res.json(users);
+      })
+      .catch(function(error) {
+        next(error);
+      });
   },
 
   getAUser: function(req, res, next) {
-
+    Models.User.findAll({
+      where: {
+        username: req.params.username
+      }
+    });
   },
 
   updateAUser: function(req, res, next) {

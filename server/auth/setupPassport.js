@@ -10,21 +10,32 @@ module.exports = function(app) {
 
   passport.use(new LocalStrategy(
     function(username, password, done) {
+
+      console.log('in setupPassport.js, LocalStrategy Line 14, function args: username:' + username);
+
       Model.User.findOne({
         where: {
-          'username': username
+          username: username
         }
       }).then(function (user) {
-        if (user == null) {
+        if (user === null) {
+
+          console.log('in setupPassport.js, user doesnt exist');
+
           return done(null, false, { message: 'Incorrect credentials.' })
         }
-        
+
         var hashedPassword = bcrypt.hashSync(password, user.salt)
-        
+
         if (user.password === hashedPassword) {
+
+          console.log('in setupPassport.js, user credential check out, returning done(null, user), where user = ', JSON.stringify(user, null, 2));
+
           return done(null, user)
         }
-        
+
+        console.log('in setupPassport.js, password is wrong');
+
         return done(null, false, { message: 'Incorrect credentials.' })
       })
     }
@@ -43,7 +54,7 @@ module.exports = function(app) {
       if (user == null) {
         done(new Error('Wrong user id.'))
       }
-      
+
       done(null, user)
     })
   })
