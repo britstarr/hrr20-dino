@@ -28,10 +28,12 @@ export default class MyRoutinesNav extends React.Component {
       fontWeight: 'bold',
       fontSize: 24,
       color: Colors.white
+
     };
     const titleStyle = {
       fontSize: 24,
-      color: Colors.white
+      color: Colors.white,
+      margin: '15px'
     };
     return (
       <div>
@@ -69,8 +71,6 @@ export default class MyRoutinesNav extends React.Component {
             </Link>
           </ToolbarGroup>
           <ToolbarGroup lastChild={true}>
-            {/* insert onClick/onTapTouch to ArrowBack */}
-            <ArrowBack />
             <div style={titleStyle}>My Routines</div>
             <Link to='/create-routine'>
               <RaisedButton
