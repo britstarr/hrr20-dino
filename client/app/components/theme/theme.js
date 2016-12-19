@@ -36,17 +36,17 @@ module.exports.brittany = {
     textColor: Colors.black
   },
   palette: {
-   primary1Color: '#FF5252',
-   primary2Color: Colors.Blue200,
-   primary3Color: '#FF5252',
-   accent1Color: '#FF5252',
-   accent2Color: '#FF5252',
-   accent3Color: '#FF5252',
-   textColor: Colors.teal900,
-   alternateTextColor: Colors.black,
-   canvasColor: '#FFF9C4',
-   pickerHeaderColor: Colors.Blue200,
-   ToolbarGroup: Colors.Blue200,
+    primary1Color: '#455A64',
+    primary2Color: '#607D8B',
+    primary3Color: '#CFD8DC',
+    accent1Color: '#009688',
+    accent2Color: Colors.red400,
+    accent3Color: '#009688',
+    textColor: '#212121',
+    alternateTextColor: '#757575',
+    canvasColor: Colors.red200,
+    pickerHeaderColor: '#009688',
+    ToolbarGroup: '#009688',
   }
 };
 
