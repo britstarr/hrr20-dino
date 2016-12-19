@@ -35,7 +35,8 @@ var Task = db_connection.define('Task', {
   id: {type: Sequelize.INTEGER, primaryKey: true, unique: true, autoIncrement: true},
   name: {type: Sequelize.STRING, unique: true, validate: {notEmpty: true}},
   description: {type: Sequelize.STRING, validate: {notEmpty: true}},
-  completed: {type: Sequelize.BOOLEAN}
+  completed: {type: Sequelize.BOOLEAN},
+  RoutineId: {type: Sequelize.INTEGER} //added routineId field. previously was being auto assigned by Task.belongsTo(Routine), so we could not modify it in create-task
 });
 
 var History = db_connection.define('History', {
