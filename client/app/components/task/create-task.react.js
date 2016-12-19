@@ -22,24 +22,35 @@ export default class CreateTask extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.getRoutineId()
-  }
+  // componentDidMount() {
+  //
+  // }
+
+  // axios.get('/routines')
+  //   .then(function(routines){
+  //     console.log("ROUTINES FROM GET", routines)
+  //     var max = -1; //start at -1, to account for the first item in the database
+  //     routines.data.forEach(function(val){
+  //       if (val.id > max) {
+  //         max = val.id
+  //         console.log('currently at max', max, val.id)
+  //       }
+  //     })
+  //   RoutineStore.data.currentRoutine = max;
+  //   console.log("max ID in query", RoutineStore.data.currentRoutine)
+  //   });
 
   getRoutineId() {
-    axios.get('/routines')
-      .then(function(routines){
-        console.log("ROUTINES FROM GET", routines)
-        var max = -1; //start at -1, to account for the first item in the database
-        routines.data.forEach(function(val){
-          if (val.id > max) {
-            max = val.id
-            console.log('currently at max', max, val.id)
-          }
+
+    return new Promise(function (resolve, reject) {
+      axios.get('/routines')
+        .then(function(val){
+          resolve(val)
         })
-      RoutineStore.data.currentRoutine = max;
-      console.log("max ID in query", RoutineStore.data.currentRoutine)
-      });
+        .catch(function(err){
+          console.log("get routine ID did error", err)
+        })
+    });
   }
 
   handleChange(fieldName, event) {
@@ -49,13 +60,31 @@ export default class CreateTask extends React.Component {
   }
 
   handleSubmit() {
-    TaskActions
-      .add({
-        name: this.state.name,
-        description: this.state.description,
-        completed: this.state.completed,
-        RoutineId: this.state.RoutineId
+    var context = this;
+    this.getRoutineId()
+      .then(function(routines) {
+        var max = -1; //start at -1, to account for the first item in the database
+          routines.data.forEach(function(val){
+            if (val.id > max) {
+              max = val.id
+            }
+          })
+        RoutineStore.data.currentRoutine = max;
+        console.log("max ID in query", RoutineStore.data.currentRoutine)
+
+        TaskActions
+          .add({
+            name: context.state.name,
+            description: context.state.description,
+            completed: context.state.completed,
+            RoutineId: RoutineStore.data.currentRoutine
+          })
       })
+      .catch(function(err) {
+        console.log("get routine ID did error", err)
+      })
+
+
   }
 
   render() {
