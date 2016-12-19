@@ -1,6 +1,6 @@
 import React from 'react';
 // Workaround to use the already existing my-routine-nav. No need to create yet another nav.
-import MyRoutinesNav from '../routine/my-routines-nav.react.js';
+import ChangeThemeNav from './change-theme-nav.react.js';
 import Paper from 'material-ui/Paper';
 import Divider from 'material-ui/Divider';
 import Toggle from 'material-ui/Toggle';
@@ -34,11 +34,6 @@ export default class ChangeTheme extends React.Component {
         name: Theme.brittany
       },
       {
-        label: 'Yellow Snow',
-        description: "Cal loves shoveling snow in Newfoundland. He also loves yellow snowcones.",
-        name: Theme.calvin
-      },
-      {
         label: 'Raccoon Garbage',
         description: "Andrew's theme. Dedicated to all trash pandas in need of a midnight snack.",
         name: Theme.andrew
@@ -52,6 +47,26 @@ export default class ChangeTheme extends React.Component {
         label: 'Light Base Theme',
         description: "Blind me with thine light.",
         name: lightBaseTheme
+      },
+      {
+       label: 'Blue Steel',
+       description: "The trademark theme.",
+       name: Theme.calvin
+      },
+      {
+       label: 'Ferrari',
+       description: "Flashing down the Autobahn at 180kph with your butt 4 inches off the pavement.",
+       name: Theme.calvin
+      },
+      {
+       label: 'Le Tigra',
+       description: "A lot softer, more of a catalogue theme.",
+       name: Theme.calvin
+      },
+      {
+       label: 'Magnum',
+       description: "Once saved the Malasian Prime Minister from a Ninja Star.",
+       name: Theme.calvin
       },
       {
         label: 'FUNTIME EXTRAVAGANZA',
@@ -86,7 +101,7 @@ export default class ChangeTheme extends React.Component {
 
   render() {
     const paperStyle = {
-      height: 600,
+      //height: 600,
       width: 600,
       margin: 20,
     };
@@ -98,7 +113,7 @@ export default class ChangeTheme extends React.Component {
 
     return (
       <div>
-        <MyRoutinesNav />
+        <ChangeThemeNav />
         <div style={centerPaper}>
           <div>
             <Paper style={paperStyle} zDepth={4}>
