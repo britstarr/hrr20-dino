@@ -13,7 +13,9 @@ import {List, ListItem} from 'material-ui/List';
 import { Link } from 'react-router';
 const routineController = require('../../../../server/api/routine/routine.controller.js');
 import axios from 'axios';
-
+import Theme from '../theme/theme.js';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
 
 export default class ChangeTheme extends React.Component {
   constructor(props) {
@@ -24,32 +26,32 @@ export default class ChangeTheme extends React.Component {
       {
         label: 'Winterfresh',
         description: "Brighten your day and freshen your smile with Prithvi's theme.",
-        name: 'Theme.prithvi'
+        name: Theme.prithvi
       },
       {
         label: 'Apple Pie',
         description: "Brit loves apple pie. She loves it so much she made an apple pie theme.",
-        name: 'Theme.brittany'
+        name: Theme.brittany
       },
       {
         label: 'Yellow Snow',
         description: "Cal loves shoveling snow in Newfoundland. He also loves yellow snowcones.",
-        name: 'Theme.calvin'
+        name: Theme.calvin
       },
       {
         label: 'Raccoon Garbage',
         description: "Andrew's theme. Dedicated to all trash pandas in need of a midnight snack.",
-        name: 'Theme.andrew'
+        name: Theme.andrew
       },
       {
         label: 'Dark Base Theme',
         description: "Based on darker colors. For those with unique tastes.",
-        name: 'darkBaseTheme'
+        name: darkBaseTheme
       },
       {
         label: 'Light Base Theme',
         description: "Blind me with thine light.",
-        name: 'lightBaseTheme'
+        name: lightBaseTheme
       },
       {
         label: 'FUNTIME EXTRAVAGANZA',
