@@ -15,7 +15,7 @@ import * as Colors from 'material-ui/styles/colors';
 import { Link } from 'react-router';
 
 
-export default class MyRoutinesNav extends React.Component {
+export default class ChangeThemeNav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +71,7 @@ export default class MyRoutinesNav extends React.Component {
             </Link>
           </ToolbarGroup>
           <ToolbarGroup lastChild={true}>
-            <div style={titleStyle}>My Routines</div>
+            <div style={titleStyle}>Theme Options</div>
             <Link to='/create-routine'>
               <RaisedButton
                 label="Create routine"
