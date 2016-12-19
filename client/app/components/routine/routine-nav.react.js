@@ -37,18 +37,9 @@ export default class Routine extends React.Component {
             <ToolbarTitle style={logoStyle} text="DinoTask" />
           </ToolbarGroup>
           <ToolbarGroup lastChild={true}>
-            {/* insert onClick/onTapTouch to ArrowBack */}
-            <ArrowBack
-              />
             {/* insert Routine name in text */}
             <ToolbarTitle style={titleStyle} text="Routine" />
             {/* insert onClick/onTapTouch to RaisedButton */}
-            <RaisedButton
-              label="Create Task"
-              labelPosition="before"
-              primary={true}
-              icon={<AddCircleOutline />}
-              />
             <ToolbarSeparator />
             {/* insert onClick/onTapTouch to RaisedButton */}
             <RaisedButton
