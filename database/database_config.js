@@ -48,7 +48,7 @@ var History = db_connection.define('History', {
 //#######################__Define Associations__##############################
 
 User.hasMany(Routine);
-Task.belongsTo(Routine);
+// Task.belongsTo(Routine);
 History.belongsTo(User);
 History.belongsTo(Routine);
 
