@@ -13,17 +13,17 @@ module.exports.prithvi = {
     textColor: Colors.white
   },
   palette: {
-    primary1Color: Colors.Blue500,
-    primary2Color: Colors.Blue200,
-    primary3Color: Colors.Blue300,
-    accent1Color: Colors.Blue300,
-    accent2Color: Colors.Blue300,
-    accent3Color: Colors.Blue300,
+    primary1Color: Colors.blue500,
+    primary2Color: Colors.blue200,
+    primary3Color: Colors.blue300,
+    accent1Color: Colors.blue300,
+    accent2Color: Colors.blue300,
+    accent3Color: Colors.blue300,
     textColor: Colors.teal900,
     alternateTextColor: Colors.white,
     canvasColor: Colors.white,
-    pickerHeaderColor: Colors.Blue200,
-    ToolbarGroup: Colors.Blue200,
+    pickerHeaderColor: Colors.blue200,
+    ToolbarGroup: Colors.blue200,
   }
 };
 
@@ -40,37 +40,38 @@ module.exports.brittany = {
     primary2Color: '#607D8B',
     primary3Color: '#CFD8DC',
     accent1Color: '#009688',
-    accent2Color: '#009688',
+    accent2Color: Colors.red400,
     accent3Color: '#009688',
     textColor: '#212121',
     alternateTextColor: '#757575',
-    canvasColor: '#607D8B',
+    canvasColor: Colors.red200,
     pickerHeaderColor: '#009688',
     ToolbarGroup: '#009688',
   }
 };
 
 // Calvin
+
 module.exports.calvin = {
-  zIndex: zIndex,
-  spacing: Spacing,
-  fontFamily: 'Roboto, sans-serif',
-  AppBar: {
-    textColor: Colors.black
-  },
-  palette: {
-    primary1Color: Colors.Blue500,
-    primary2Color: Colors.Blue200,
-    primary3Color: Colors.Blue300,
-    accent1Color: Colors.Blue300,
-    accent2Color: Colors.Blue300,
-    accent3Color: Colors.Blue300,
-    textColor: Colors.teal900,
-    alternateTextColor: Colors.white,
-    canvasColor: Colors.white,
-    pickerHeaderColor: Colors.Blue200,
-    ToolbarGroup: Colors.Blue200,
-  }
+ zIndex: zIndex,
+ spacing: Spacing,
+ fontFamily: 'Roboto, sans-serif',
+ AppBar: {
+   textColor: Colors.black
+ },
+ palette: {
+   primary1Color: Colors.blueGrey500,
+   primary2Color: Colors.lightBlue200,
+   primary3Color: Colors.lightBlue300,
+   accent1Color: Colors.blueGrey300,
+   accent2Color: Colors.blueGrey300,
+   accent3Color: Colors.blueGrey300,
+   textColor: Colors.teal900,
+   alternateTextColor: Colors.white,
+   canvasColor: Colors.white,
+   pickerHeaderColor: Colors.blueGrey200,
+   ToolbarGroup: Colors.blueGrey200,
+ }
 };
 
 // Andrew
@@ -86,13 +87,13 @@ module.exports.andrew = {
     primary1Color: '#455A64',
     primary2Color: '#607D8B',
     primary3Color: '#757575',
-    accent1Color: Colors.Green300,
-    accent2Color: Colors.Green300,
-    accent3Color: Colors.Green300,
+    accent1Color: Colors.green300,
+    accent2Color: Colors.brown500,
+    accent3Color: Colors.green300,
     textColor: '#212121',
     alternateTextColor: Colors.white,
     canvasColor: '#BDBDBD',
-    pickerHeaderColor: Colors.Green200,
-    ToolbarGroup: Colors.Green200,
+    pickerHeaderColor: Colors.green200,
+    ToolbarGroup: Colors.green200,
   }
 };
