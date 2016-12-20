@@ -1,21 +1,3 @@
-Skip to content
-This repository
-Search
-Pull requests
-Issues
-Gist
- @britstarr
- Unwatch 3
-  Star 0
- Fork 18 hrr20-alpaca/hrr20-dino
-forked from hrr20-dino/hrr20-dino
- Code  Pull requests 0  Projects 0  Wiki  Pulse  Graphs  Settings
-Branch: master Find file Copy pathhrr20-dino/client/app/components/theme/theme.js
-6642984  33 minutes ago
-@galaxode galaxode Update themes. Add Calvin, fix Prithvi, update Andrew and Brittany bu…
-4 contributors @galaxode @DiogenisPanagiotis @Prithvi-A @britstarr
-RawBlameHistory
-100 lines (93 sloc)  2.35 KB
 'user strict';
 
 import * as Colors from 'material-ui/styles/colors';
@@ -115,5 +97,3 @@ module.exports.andrew = {
     ToolbarGroup: Colors.green200,
   }
 };
-Contact GitHub API Training Shop Blog About
-© 2016 GitHub, Inc. Terms Privacy Security Status Help
