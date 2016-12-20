@@ -161,7 +161,7 @@ export default class Routine extends React.Component {
           <div>
             <Paper style={paperStyle} zDepth={4}>
 
-              <Link to='/' style={{margin: 20}}>
+              <Link to='/' >
                 <ArrowBack />
               </Link>
 
@@ -192,7 +192,7 @@ export default class Routine extends React.Component {
               </List>
               <Divider/>
                <div style={{margin: 20}}>
-              <TextField 
+              <TextField
                 onChange={this.handleChange.bind(this, 'newTask')}
                 value={this.state.newTask}
                 hintText='Wash Hands First!'
@@ -200,7 +200,7 @@ export default class Routine extends React.Component {
                 rows={2}
                 fullWidth={true}
               />
-              <TextField 
+              <TextField
                 onChange={this.handleChange.bind(this, 'newTaskDescription')}
                 value={this.state.newTaskDescription}
                 hintText='Be clean!'
@@ -210,6 +210,7 @@ export default class Routine extends React.Component {
               />
               </div>
             <RaisedButton
+              style={{margin: 20}}
               label='Add Task!'
               labelPosition='after'
               icon={<AddCircleOutline />}
