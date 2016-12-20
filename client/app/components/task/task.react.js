@@ -58,9 +58,7 @@ export default class Task extends React.Component {
               </Link>
             </div>
             <div style={taskStyle}>
-              {console.log(this.props)}
               <h3>{this.props.params.id}</h3>
-              <h5>{this.props.params.description}</h5>
             </div>
             </Paper>
           </div>
