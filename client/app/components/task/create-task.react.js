@@ -40,8 +40,10 @@ export default class CreateTask extends React.Component {
   }
 
   componentDidMount() {
-    this.getRoutineData();
-    this.getTaskData();
+
+    window.setTimeout(this.getRoutineData.bind(this), 1500);
+    // this.getRoutineData();
+    // this.getTaskData();
 
     // RoutineStore.addChangeListener(this.getRoutineData.bind(this));
     TaskStore.addChangeListener(this.getTaskData.bind(this));
@@ -54,7 +56,6 @@ export default class CreateTask extends React.Component {
 
   //////// copied from my-routines, add efficiency later
   getTaskData() {
-    console.log('this state', this.state.RoutineId)
     TaskStore.data.currentRoutine = this.state.RoutineId;
     TaskStore
       .get()
@@ -106,7 +107,7 @@ export default class CreateTask extends React.Component {
     })
     // console.log('THIS IS ROUTINE!!!!! ', routine);
     this.setState({
-      RoutineId: latestRoutineId+1,
+      RoutineId: latestRoutineId,
     }, this.getTaskData);
   }
 
@@ -189,7 +190,7 @@ export default class CreateTask extends React.Component {
     this.setState({
       name: '',
       description: ''
-    }, () => console.log('invoked setState in add, newTask state currently: ' + this.state.newTask));
+    } );
     //////////////////////////// end of copy
 
   }

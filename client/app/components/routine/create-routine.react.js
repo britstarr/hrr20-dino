@@ -59,10 +59,11 @@ export default class CreateRoutine extends React.Component {
     name: this.state.name || '',
     description: this.state.description || '',
     repeat: this.state.days
+  }, function() {
+    browserHistory.push('create-task');
   });
 
   // setTimeout(function(){
-    browserHistory.push('create-task');
   // }, 3000).bind(this);
 
   }
@@ -127,7 +128,6 @@ export default class CreateRoutine extends React.Component {
                     primary={true}
                     icon={<AddCircleOutline />}
                     onClick={this.handleSubmit.bind(this)}
-                    Link to='/create-task'
                   />
                 </Link>
               </div>
