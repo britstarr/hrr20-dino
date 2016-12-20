@@ -113,6 +113,7 @@ export default class MyRoutines extends React.Component {
                       {/* insert onTapTouch for ListItem */}
                       <ListItem
                         primaryText={task.name}
+                        secondaryText={task.description}
                         rightIcon={ <Link to={{pathname:`/tasks/${task.name}`, state:{name: routine.name} }} ><Launch /></Link>}
                       >
                       </ListItem>
