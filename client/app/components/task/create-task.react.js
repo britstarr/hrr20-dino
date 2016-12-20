@@ -251,22 +251,23 @@ export default class CreateTask extends React.Component {
                   value={this.state.description}
                   fullWidth={true}
                   multiLine={true}
-                  rows={4}
+                  rows={3}
                   onChange={this.handleChange.bind(this, 'description')}
                 />
-                <div><br />
+              <div>
                 <RaisedButton
                   label="Add Task"
                   labelPosition="before"
                   primary={true}
                   icon={<AddCircleOutline />}
-                  style={{marginLeft: '32%'}}
+                  style={{marginLeft: '32%', marginBottom: '4%', marginTop: '4%'}}
                   onClick={this.handleSubmit.bind(this)}
                 />
                 <RaisedButton
                   label="Done"
                   labelPosition="before"
                   primary={true}
+                  style={{marginLeft: '6%', marginBottom: '4%', marginTop: '4%'}}
                   onClick={this.handleComplete.bind(this)}
                 />
               </div>
