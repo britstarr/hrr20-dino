@@ -107,12 +107,14 @@ export default class MyRoutines extends React.Component {
 
                 {/*for each task in routine */}
                 {this.findTasksForRoutine(routine).map((task) => {
+                  console.log('TASK', task)
                   return (
                     <div key={task.id}>
                       <Divider />
                       {/* insert onTapTouch for ListItem */}
                       <ListItem
                         primaryText={task.name}
+                        secondaryText={task.description}
                         rightIcon={ <Link to={{pathname:`/tasks/${task.name}`, state:{name: routine.name} }} ><Launch /></Link>}
                       >
                       </ListItem>
