@@ -13,6 +13,8 @@ import IconButton from 'material-ui/IconButton';
 import Checkbox from 'material-ui/Checkbox';
 import ArrowBack from 'material-ui/svg-icons/navigation/arrow-back';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import { Router, browserHistory } from 'react-router'
+
 
 
 
@@ -95,7 +97,7 @@ export default class CreateTask extends React.Component {
   }
 
   getThisRoutine() {
-    var latestRoutineId = 1;
+    var latestRoutineId = 0;
     // console.log(this.state.routines);
     var routine = _.forEach(this.state.routines, (routine) => {
       if (routine.id > latestRoutineId) {
@@ -192,6 +194,10 @@ export default class CreateTask extends React.Component {
 
   }
 
+  handleComplete() {
+    browserHistory.push('/');
+  }
+
   render() {
     const paperStyle = {
       width: 400,
@@ -245,17 +251,24 @@ export default class CreateTask extends React.Component {
                   value={this.state.description}
                   fullWidth={true}
                   multiLine={true}
-                  rows={4}
+                  rows={3}
                   onChange={this.handleChange.bind(this, 'description')}
                 />
-                <div><br />
+              <div>
                 <RaisedButton
                   label="Add Task"
                   labelPosition="before"
                   primary={true}
                   icon={<AddCircleOutline />}
-                  style={{marginLeft: '32%'}}
+                  style={{marginLeft: '32%', marginBottom: '4%', marginTop: '4%'}}
                   onClick={this.handleSubmit.bind(this)}
+                />
+                <RaisedButton
+                  label="Done"
+                  labelPosition="before"
+                  primary={true}
+                  style={{marginLeft: '6%', marginBottom: '4%', marginTop: '4%'}}
+                  onClick={this.handleComplete.bind(this)}
                 />
               </div>
               </div>

@@ -45,7 +45,7 @@ export default class Application extends React.Component {
       routines: [],
       tasks: [],
 
-      theme: darkBaseTheme
+      theme: Theme.prithvi
     };
 
     // this.routes = {
